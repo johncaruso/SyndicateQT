@@ -16,9 +16,9 @@
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2016 The Syndicate developers</source>
-        <translation><source>Copyright © 2009-2014 Die Bitcoin Entwickler
+        <translation>Copyright © 2009-2014 Die Bitcoin Entwickler
 Copyright © 2012-2014 Die NovaCoin Entwickler
-Copyright © 2016 Die Syndicate Entwickler</source></translation>
+Copyright © 2016 Die Syndicate Entwickler</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -948,7 +948,7 @@ Adresse: %4</translation>
 
  Das bedeutet eine Gebühr von mindestens %1 pro KB ist notwendig.
 
- Kann +/- 1 Byte pro Input variieren.        
+ Kann +/- 1 Byte pro Input variieren.
         </translation>
     </message>
     <message>
@@ -959,7 +959,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 
  This means a fee of at least %1 per kb is required.</source>
         <translation>Transaktionen mit einer höheren Priorität werden mit größerer Wahrscheinlichkeit in einen Block aufgenommen.
-        
+
 Dieses Label wird rot, sofern die Priorität kleiner als &quot;medium&quot; ist.
 
  Das bedeutet eine Gebühr von mindestens %1 pro KB ist notwendig.</translation>
@@ -968,11 +968,11 @@ Dieses Label wird rot, sofern die Priorität kleiner als &quot;medium&quot; ist.
         <location line="+1"/>
         <source>This label turns red, if any recipient receives an amount smaller than %1.
 
- This means a fee of at least %2 is required. 
+ This means a fee of at least %2 is required.
 
  Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
         <translation>Dieses Label wird rot, sofern ein Empfänger weniger als %1 erhält.
-        
+
  Das bedeutet eine Gebühr von mindestens %2 ist notwendig.
 
  Beträge geringer als 0.546 mal die minimale Weiterleitungsgebühr werden als DUST angezeigt.</translation>
@@ -983,7 +983,7 @@ Dieses Label wird rot, sofern die Priorität kleiner als &quot;medium&quot; ist.
 
  This means a fee of at least %2 is required.</source>
 <translation>Dieses Label wird rot, sobald das Wechselgeld weniger als %1 beträgt.
-        
+
  Das bedeutet eine Gebühr von mindestens %2 ist notwendig.</translation>
     </message>
     <message>
@@ -2754,7 +2754,7 @@ Benutzername und Passwort müssen sich unterscheiden.
 Wenn die Datei nicht existiert, sollte sie mir der Berechtigung nur-lesen für den Eigentümer konfiguriert werden.
 Es ist auch empfohlen alertnotify zu aktivieren um bei Problemen verständigt zu werden;
 Zum Beispiel: alertnotify=echo %%s | mail -s &quot;Syndicate Alarm&quot; admin@foo.com
-        
+
 </translation>
     </message>
     <message>
