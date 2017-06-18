@@ -48,6 +48,7 @@ LIBS += \
  -l boost_program_options \
  -l boost_thread-mt \
  -l ssl \
+ -l gmp \
  -l crypto \
  -l z
 endif
