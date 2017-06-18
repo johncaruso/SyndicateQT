@@ -36,7 +36,7 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
     {
         struct in_addr ip;
         unsigned int i = data[k], t;
-        
+
         // -- convert to big endian
         t =   (i & 0x000000ff) << 24u
             | (i & 0x0000ff00) << 8u
@@ -44,7 +44,7 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
             | (i & 0xff000000) >> 24u;
         
         memcpy(&ip, &t, sizeof(ip));
-        
+
         CAddress addr(CService(ip, port));
         addr.nTime = GetTime()-GetRand(nOneWeek)-nOneWeek;
         vSeedsOut.push_back(addr);
@@ -79,7 +79,7 @@ public:
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
         genesis.nTime    = 1465873655;
-        genesis.nBits    = bnProofOfWorkLimit.GetCompact(); 
+        genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce   = 48480;
 
         hashGenesisBlock = genesis.GetHash();
@@ -87,19 +87,19 @@ public:
         assert(hashGenesisBlock == uint256("0x00008b645780949ad9a346df272390396d10f6c67a3bef9e2fe2114854786ac3"));
         assert(genesis.hashMerkleRoot == uint256("0xffc835b4aab6d5002db95706cd864c5614dfb1d7cfda1ce3beedf740a9aca558"));
 
-        
-        base58Prefixes[PUBKEY_ADDRESS] = list_of(63);
-        base58Prefixes[SCRIPT_ADDRESS] = list_of(85);
-        base58Prefixes[SECRET_KEY] =     list_of(153);
-        base58Prefixes[STEALTH_ADDRESS] = list_of(40);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
-		
+
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 85);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 153);
+        base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1, 40);
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char>>();
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char>>();
+
 
         vSeeds.push_back(CDNSSeedData("syndicatelabs.org", "dnsseed1.syndicatelabs.org"));
 		vSeeds.push_back(CDNSSeedData("syndicatelabs.org", "dnsseed2.syndicatelabs.org"));
         convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
-		
+
 
         nPoolMaxTransactions = 3;
         strDarksendPoolDummyAddress = "SyndicateDarksendPoo1DummyAdy4viSr";
@@ -141,7 +141,7 @@ public:
         strDataDir = "testnet";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nBits  = 520159231; 
+        genesis.nBits  = 520159231;
         genesis.nNonce = 80086;
 
         // assert(hashGenesisBlock == uint256("0x"));
@@ -149,12 +149,12 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of(97);
-        base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
-        base58Prefixes[SECRET_KEY]     = list_of(239);
-        base58Prefixes[STEALTH_ADDRESS] = list_of(40);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 97);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
+        base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1, 40);
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char>>();;
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char>>();;
 
         convertSeeds(vFixedSeeds, pnTestnetSeed, ARRAYLEN(pnTestnetSeed), nDefaultPort);
 
@@ -186,9 +186,9 @@ void SelectParams(CChainParams::Network network) {
 }
 
 bool SelectParamsFromCommandLine() {
-    
+
     bool fTestNet = GetBoolArg("-testnet", false);
-    
+
     if (fTestNet) {
         SelectParams(CChainParams::TESTNET);
     } else {

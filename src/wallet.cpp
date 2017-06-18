@@ -1780,7 +1780,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
             int nDepth = pcoin->GetDepthInMainChain();
             if (nDepth < 1)
                 continue;
-				
+
 			nStakeMinConfirmations = 180;
 
             if (nDepth < nStakeMinConfirmations)
@@ -3335,9 +3335,9 @@ bool CWallet::SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t 
 
     if (fDebug)
     {
-        LogPrintf("Stealth send to generated pubkey %"PRIszu": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
+        LogPrintf("Stealth send to generated pubkey %" PRIszu ": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
         LogPrintf("hash %s\n", addrTo.ToString().c_str());
-        LogPrintf("ephem_pubkey %"PRIszu": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
+        LogPrintf("ephem_pubkey %" PRIszu ": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
     };
 
     std::vector<unsigned char> vchNarr;
@@ -3624,7 +3624,7 @@ uint64_t CWallet::GetStakeWeight() const
 
     LOCK2(cs_main, cs_wallet);
     int nStakeMinConfirmations = 180;
-	
+
 	nStakeMinConfirmations = 180;
 
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
