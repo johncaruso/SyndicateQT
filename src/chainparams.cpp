@@ -42,7 +42,7 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
             | (i & 0x0000ff00) << 8u
             | (i & 0x00ff0000) >> 8u
             | (i & 0xff000000) >> 24u;
-        
+
         memcpy(&ip, &t, sizeof(ip));
 
         CAddress addr(CService(ip, port));
@@ -92,8 +92,8 @@ public:
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 85);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 153);
         base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1, 40);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char>>();
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char>>();
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container< std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container< std::vector<unsigned char> >();
 
 
         vSeeds.push_back(CDNSSeedData("syndicatelabs.org", "dnsseed1.syndicatelabs.org"));
@@ -153,8 +153,8 @@ public:
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
         base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
         base58Prefixes[STEALTH_ADDRESS] = std::vector<unsigned char>(1, 40);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char>>();;
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char>>();;
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container< std::vector<unsigned char> >();;
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94).convert_to_container< std::vector<unsigned char> >();;
 
         convertSeeds(vFixedSeeds, pnTestnetSeed, ARRAYLEN(pnTestnetSeed), nDefaultPort);
 
