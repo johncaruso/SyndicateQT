@@ -16,7 +16,8 @@ INCLUDEPATHS= \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/Cellar/boost/1.59.0/include" \
  -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
- -I"$(DEPSDIR)/openssl-1.0.1p/include"
+ -I"$(DEPSDIR)/openssl-1.0.1p/include" \
+ -I"$(DEPSDIR)/opt/openssl/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
@@ -66,7 +67,7 @@ endif
 
 # ppc doesn't work because we don't support big-endian
 CFLAGS += -Wall -Wextra -Wformat -Wno-ignored-qualifiers -Wformat-security -Wno-unused-parameter -Wunused-function -Wunused-variable -fpermissive -Wconversion-null -Wno-deprecated-declarations\
-    $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
+    $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS) $(CPPFLAGS)
 
 OBJS= \
     obj/alert.o \
@@ -208,7 +209,7 @@ obj/%.o: %.c
 	  rm -f $(@:%.o=%.d)
 
 Syndicated: $(OBJS:obj/%=obj/%)
-	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
+	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $(LDFLAGS) $^ $(LIBS)
 
 clean:
 	-rm -f Syndicated

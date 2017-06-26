@@ -1,4 +1,9 @@
+# Mac OS X Build Instructions
+
+## Copyright
+
 Copyright (c) 2009-2012 Bitcoin Developers
+
 Distributed under the MIT/X11 software license, see the accompanying file
 license.txt or http://www.opensource.org/licenses/mit-license.php.  This
 product includes software developed by the OpenSSL Project for use in the
@@ -6,11 +11,10 @@ OpenSSL Toolkit (http://www.openssl.org/).  This product includes cryptographic
 software written by Eric Young (eay@cryptsoft.com) and UPnP software written by
 Thomas Bernard.
 
-
-Mac OS X Syndicated build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
+## Instructions [10.5, 10.6]
 
 See readme-qt.rst for instructions on building Syndicate QT, the
 graphical user interface.
@@ -52,3 +56,29 @@ Run
   ./Syndicated -daemon # to start the Syndicate daemon.
 Run
   ./Syndicated help # When the daemon is running, to get a list of RPC commands
+
+
+## Building Syndicated [OS X 10.9 and up]
+
+1. Ensure that you have installed the latest version of openSSL and boost (homebrew?)
+2. Since the `makefile.osx` will depend on these two libraries when building `Syndicated` on OSX you can now specify the include paths and library paths thusly:
+
+```
+cd Syndicated/src
+make -f makefile.osx clean
+CPPFLAGS="-I/usr/local/opt/openssl/include -Iusr/local/opt/boost/include" LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/boost/lib" make -f makefile.osx
+```
+
+Note: The paths above are an example, stuff might get installed elsewhere!
+
+## Building the SYNX wallet [OS X 10.9 and up]
+
+Verify that you have an installed version of `qt` on the system. For example my version of `qt` installs at: `/usr/local/Cellar/qt/5.8.0_2/`. Once you have this setup, install the wallet by running the following from the root directory of the project (where `Syndicate.pro` lives). Please note that to get my install working on OS X 10.9, I had to modify the location of `openssl` being passed into `qmake`.
+
+```
+cd Syndicated/
+/usr/local/Cellar/qt/5.8.0_2/bin/qmake USE_UPNP=- \
+    OPENSSL_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2k/include \
+    OPENSSL_LIB_PATH=/usr/local/Cellar/openssl/1.0.2k/lib
+make
+```
